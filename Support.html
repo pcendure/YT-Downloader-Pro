@@ -1,36 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8"><title>Support | YT Downloader Pro</title>
+    <meta charset="UTF-8">
+    <title>Support | YT Downloader Pro</title>
+    <link rel="icon" href="endureicon.ico" type="image/x-icon">
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Get help with YT Downloader Pro. Contact our support team for license activation, technical issues, or general inquiries.">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Support | YT Downloader Pro">
+    <meta property="og:description" content="Need help with YT Downloader Pro? Contact our specialized support team.">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
-        body { background: #020617; color: white; font-family: 'Inter', sans-serif; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 1.5rem; }
-        input, textarea { background: rgba(255, 255, 255, 0.05)!important; border: 1px solid rgba(255, 255, 255, 0.1)!important; color: white!important; }
+
+        body {
+            background: #020617;
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+        }
+
+        input,
+        textarea {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            color: white !important;
+        }
     </style>
 </head>
+
 <body class="flex flex-col min-h-screen">
     <nav class="sticky top-0 z-50 bg-slate-950/50 backdrop-blur-lg border-b border-white/5">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-2"><div class="bg-blue-600 p-2 rounded-lg"><i class="fas fa-fire text-white"></i></div><span class="font-bold">YT Downloader Pro</span></a>
-            <a href="index.html" class="text-sm text-gray-400 hover:text-white transition"><i class="fas fa-arrow-left mr-2"></i> Back Home</a>
+            <a href="index.html" class="flex items-center space-x-2">
+                <div class="bg-blue-600 p-2 rounded-lg"><i class="fas fa-fire text-white"></i></div><span
+                    class="font-bold">YT Downloader Pro</span>
+            </a>
+            <div class="flex items-center space-x-4">
+                <a href="index.html" class="text-sm text-gray-400 hover:text-white transition" id="back-link"><i
+                        class="fas fa-arrow-left mr-2"></i> Back Home</a>
+                <div class="flex items-center space-x-2 border-l border-white/10 pl-4 ml-4">
+                    <!-- Google Translate Widget -->
+                    <div id="google_translate_element"></div>
+                </div>
+            </div>
         </div>
     </nav>
 
     <main class="flex-grow flex items-center justify-center px-6 py-12">
         <div class="glass w-full max-w-2xl p-8 md:p-12">
-            <h1 class="text-3xl font-bold mb-6 text-center">Contact Support</h1>
-            <form action="https://formspree.io/f/mykgogpq" method="POST" class="space-y-4">
-                <input type="text" name="name" required placeholder="Full Name" class="w-full p-4 rounded-xl">
-                <input type="email" name="email" required placeholder="Email Address" class="w-full p-4 rounded-xl">
-                <input type="text" name="hwid" placeholder="Hardware ID (Optional)" class="w-full p-4 rounded-xl">
-                <textarea name="message" required rows="4" placeholder="How can we help?" class="w-full p-4 rounded-xl"></textarea>
-                <button type="submit" class="w-full bg-blue-600 font-bold py-4 rounded-xl hover:bg-blue-500 transition shadow-lg shadow-blue-500/20">Send Message</button>
+            <h1 class="text-3xl font-bold mb-6 text-center" id="title">Contact Support</h1>
+            <form action="https://formspree.io/f/mykgogpq" method="POST" class="space-y-4" id="supportForm">
+                <input type="text" name="name" id="name" required placeholder="Full Name" class="w-full p-4 rounded-xl">
+                <input type="email" name="email" id="email" required placeholder="Email Address"
+                    class="w-full p-4 rounded-xl">
+                <input type="text" name="hwid" id="hwid" placeholder="Hardware ID (Optional)"
+                    class="w-full p-4 rounded-xl">
+                <textarea name="message" id="message" required rows="4" placeholder="How can we help?"
+                    class="w-full p-4 rounded-xl"></textarea>
+                <button type="submit" id="submitBtn"
+                    class="w-full bg-blue-600 font-bold py-4 rounded-xl hover:bg-blue-500 transition shadow-lg shadow-blue-500/20">Send
+                    Message</button>
             </form>
         </div>
     </main>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,bn,hi,ar,fr,es',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <style>
+        /* Modernize Google Translate Widget */
+        #google_translate_element {
+            min-height: 20px;
+        }
+
+        .goog-te-gadget-simple {
+            background-color: #ffffff !important;
+            border: 1px solid #ffffff !important;
+            padding: 4px 12px !important;
+            border-radius: 8px !important;
+            display: flex !important;
+            align-items: center !important;
+        }
+
+        .goog-te-gadget-simple .goog-te-menu-value {
+            color: #0f172a !important;
+            font-size: 12px !important;
+            font-weight: 600 !important;
+        }
+
+        .goog-te-gadget-simple .goog-te-menu-value span {
+            color: #0f172a !important;
+        }
+
+        .goog-te-gadget {
+            color: #0f172a !important;
+        }
+
+        .goog-te-gadget-simple {
+            color: #ffffff !important;
+        }
+
+        .goog-te-gadget-icon {
+            display: none !important;
+        }
+
+        .goog-te-banner-frame.skiptranslate {
+            display: none !important;
+        }
+
+        body {
+            top: 0px !important;
+        }
+    </style>
 
     <footer class="container mx-auto px-6 py-12 border-t border-white/10 text-center text-gray-500 text-sm">
         <div class="flex justify-center space-x-6 mb-6">
@@ -38,7 +140,8 @@
             <a href="Privacy Policy.html" class="hover:text-white transition">Privacy Policy</a>
             <a href="Support.html" class="hover:text-white transition">Support</a>
         </div>
-        <p>© 2025 Endure PC. All Rights Reserved.</p>
+        <p id="footer-copy">© 2025 Endure PC. All Rights Reserved.</p>
     </footer>
 </body>
+
 </html>

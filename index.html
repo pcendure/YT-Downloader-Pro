@@ -1,136 +1,366 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube Downloader Pro | The Ultimate Offline Media Suite</title>
+    <title>YT Downloader Pro | The Ultimate Offline Media Suite</title>
+    <link rel="icon" href="endureicon.ico" type="image/x-icon">
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Download YouTube videos, playlists, and channels in 1080p MP4 or high-quality MP3. YT Downloader Pro is the secure, privacy-focused offline media suite for Windows.">
+    <meta name="keywords"
+        content="youtube downloader, yt downloader, video downloader, mp3 converter, offline video, playlist downloader, channel downloader, windows software, no telemetry">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="YT Downloader Pro | The Ultimate Offline Media Suite">
+    <meta property="og:description"
+        content="Download YouTube videos, playlists, and channels in 1080p MP4 or high-quality MP3. Secure, private, and fast.">
+    <meta property="og:image" content="software-snapshot.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="YT Downloader Pro | The Ultimate Offline Media Suite">
+    <meta property="twitter:description"
+        content="Download YouTube videos, playlists, and channels in 1080p MP4 or high-quality MP3. Secure, private, and fast.">
+    <meta property="twitter:image" content="software-snapshot.png">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "YT Downloader Pro",
+      "operatingSystem": "Windows",
+      "applicationCategory": "MultimediaApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "24.99",
+        "priceCurrency": "USD"
+      },
+      "description": "Professional YouTube video and audio downloader for Windows. Features batch downloading, playlist support, and zero-telemetry privacy."
+    }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
-        body { background: radial-gradient(circle at top right, #1e293b, #0f172a, #020617); color: white; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 1rem; transition: transform 0.3s ease, border-color 0.3s ease; }
-        .glass:hover { border-color: rgba(96, 165, 250, 0.3); }
-        .glow-button { transition: all 0.3s ease; box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); }
-        .glow-button:hover { box-shadow: 0 0 25px rgba(59, 130, 246, 0.7); transform: translateY(-2px); }
-        .gradient-text { background: linear-gradient(to right, #60a5fa, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .nav-link { transition: color 0.3s ease; }
-        .nav-link:hover { color: white; }
+
+        body {
+            background: radial-gradient(circle at top right, #1e293b, #0f172a, #020617);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .glass:hover {
+            border-color: rgba(96, 165, 250, 0.3);
+        }
+
+        .glow-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .glow-button:hover {
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.7);
+            transform: translateY(-2px);
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #60a5fa, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: white;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            padding: 4px 10px;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: #2563eb;
+            color: white;
+            border-color: transparent;
+        }
     </style>
 </head>
+
 <body class="antialiased flex flex-col min-h-screen">
 
     <nav class="sticky top-0 z-50 bg-slate-950/50 backdrop-blur-lg border-b border-white/5">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="index.html" class="flex items-center space-x-2 hover:opacity-80 transition">
                 <div class="bg-blue-600 p-2 rounded-lg"><i class="fas fa-fire text-white text-xl"></i></div>
-                <span class="text-xl font-bold tracking-tight">YT Downloader <span class="text-blue-500">Pro</span></span>
+                <span class="text-xl font-bold tracking-tight">YT Downloader <span
+                        class="text-blue-500">Pro</span></span>
             </a>
-            <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-400">
-                <a href="#features" class="nav-link">Features</a>
-                <a href="#how-it-works" class="nav-link">How it Works</a>
-                <a href="Support.html" class="nav-link">Support</a>
-                <a href="https://payhip.com/b/u0CnZ" class="nav-link text-blue-400 font-bold">Buy Now</a>
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-400">
+                <a href="#features" class="nav-link" id="nav-features">Features</a>
+                <a href="#how-it-works" class="nav-link" id="nav-how">How it Works</a>
+                <a href="Support.html" class="nav-link" id="nav-support">Support</a>
+                <a href="https://payhip.com/b/u0CnZ" class="nav-link text-blue-400 font-bold" id="nav-buy">Buy Now</a>
+                <div class="flex items-center space-x-2 border-l border-white/10 pl-6 ml-6">
+                    <!-- Google Translate Widget -->
+                    <div id="google_translate_element"></div>
+                </div>
             </div>
-            <a href="https://payhip.com/b/u0CnZ" class="md:hidden bg-blue-600 px-4 py-2 rounded-lg text-xs font-bold">GET PRO</a>
+            <div class="md:hidden flex items-center space-x-4">
+                <div id="google_translate_element_mob"></div>
+                <a href="https://payhip.com/b/u0CnZ" class="bg-blue-600 px-4 py-2 rounded-lg text-xs font-bold"
+                    id="nav-get-pro">GET PRO</a>
+            </div>
         </div>
     </nav>
 
     <header class="container mx-auto px-6 pt-20 pb-16 text-center">
-        <div class="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest text-blue-400 uppercase glass rounded-full">
+        <div id="hero-tag"
+            class="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest text-blue-400 uppercase glass rounded-full">
             &#128640; Now with 100% Offline Licensing
         </div>
-        <h1 class="text-5xl md:text-7xl font-extrabold mb-8 tracking-tight leading-tight">
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-8 tracking-tight leading-tight" id="hero-title">
             The Ultimate <span class="gradient-text">Offline</span> <br>Media Suite
         </h1>
-        <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-12">
-            Download high-quality video and audio with enterprise-grade security. 
+        <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-12" id="hero-desc">
+            Download high-quality video and audio with enterprise-grade security.
             Powered by yt-dlp for maximum reliability and speed.
         </p>
 
         <div class="relative max-w-4xl mx-auto mb-20 group">
-            <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
+            <div
+                class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000">
+            </div>
             <div class="relative glass p-2 shadow-2xl overflow-hidden">
-                <img src="software-snapshot.png" alt="YouTube Downloader Pro Interface" class="rounded-lg w-full">
+                <img src="software-snapshot.png" alt="YT Downloader Pro Interface" class="rounded-lg w-full">
             </div>
         </div>
 
         <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-6">
-            <a href="https://payhip.com/b/u0CnZ" class="glow-button bg-blue-600 hover:bg-blue-500 px-10 py-5 rounded-full font-bold text-lg w-full md:w-auto">Get Your Pro License</a>
-            <a href="#features" class="glass px-10 py-5 rounded-full font-bold text-lg hover:bg-white/5 w-full md:w-auto transition">View Features</a>
+            <a href="https://payhip.com/b/u0CnZ" id="hero-btn-buy"
+                class="glow-button bg-blue-600 hover:bg-blue-500 px-10 py-5 rounded-full font-bold text-lg w-full md:w-auto">Get
+                Your Pro License</a>
+            <a href="#features" id="hero-btn-features"
+                class="glass px-10 py-5 rounded-full font-bold text-lg hover:bg-white/5 w-full md:w-auto transition">View
+                Features</a>
         </div>
     </header>
 
     <section id="features" class="container mx-auto px-6 py-24 border-t border-white/5">
-        <h2 class="text-3xl md:text-4xl font-bold mb-16 flex items-center gap-3"><i class="fas fa-star text-yellow-500"></i> Why Go Pro?</h2>
+        <h2 class="text-3xl md:text-4xl font-bold mb-16 flex items-center gap-3" id="features-title"><i
+                class="fas fa-star text-yellow-500"></i> Why Go Pro?</h2>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div class="glass p-8">
-                <div class="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center mb-6"><i class="fas fa-bolt text-blue-500 text-2xl"></i></div>
-                <h3 class="text-xl font-bold mb-3">Maximum Speed</h3>
-                <p class="text-gray-400 leading-relaxed">Multi-threaded worker pool ensures your downloads finish in seconds, not minutes.</p>
+                <div class="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center mb-6"><i
+                        class="fas fa-bolt text-blue-500 text-2xl"></i></div>
+                <h3 class="text-xl font-bold mb-3" id="feat-1-title">Maximum Speed</h3>
+                <p class="text-gray-400 leading-relaxed" id="feat-1-desc">Multi-threaded worker pool ensures your
+                    downloads finish in seconds, not minutes.</p>
             </div>
             <div class="glass p-8">
-                <div class="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6"><i class="fas fa-layer-group text-purple-500 text-2xl"></i></div>
-                <h3 class="text-xl font-bold mb-3">Batch & Playlists</h3>
-                <p class="text-gray-400 leading-relaxed">Easily grab entire channels or long playlists with just a single URL link.</p>
+                <div class="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6"><i
+                        class="fas fa-layer-group text-purple-500 text-2xl"></i></div>
+                <h3 class="text-xl font-bold mb-3" id="feat-2-title">Batch & Playlists</h3>
+                <p class="text-gray-400 leading-relaxed" id="feat-2-desc">Easily grab entire channels or long playlists
+                    with just a single URL link.</p>
             </div>
             <div class="glass p-8">
-                <div class="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center mb-6"><i class="fas fa-user-shield text-green-500 text-2xl"></i></div>
-                <h3 class="text-xl font-bold mb-3">100% Private</h3>
-                <p class="text-gray-400 leading-relaxed">No telemetry. No tracking. Your activity stays exclusively on your local machine.</p>
+                <div class="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center mb-6"><i
+                        class="fas fa-user-shield text-green-500 text-2xl"></i></div>
+                <h3 class="text-xl font-bold mb-3" id="feat-3-title">100% Private</h3>
+                <p class="text-gray-400 leading-relaxed" id="feat-3-desc">No telemetry. No tracking. Your activity stays
+                    exclusively on your local machine.</p>
             </div>
         </div>
     </section>
 
     <section id="how-it-works" class="container mx-auto px-6 py-24 border-t border-white/5">
-        <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">How It Works</h2>
+        <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center" id="how-title">How It Works</h2>
         <div class="grid md:grid-cols-3 gap-12 text-center">
             <div class="space-y-4">
                 <div class="text-4xl font-black text-blue-500/30">01</div>
-                <h3 class="text-xl font-bold">Paste URLs</h3>
-                <p class="text-gray-400">Copy and paste your YouTube links (Videos, Playlists, or Channels) directly into the interface.</p>
+                <h3 class="text-xl font-bold" id="how-1-title">Paste URLs</h3>
+                <p class="text-gray-400" id="how-1-desc">Copy and paste your YouTube links (Videos, Playlists, or
+                    Channels) directly into the interface.</p>
             </div>
             <div class="space-y-4">
                 <div class="text-4xl font-black text-purple-500/30">02</div>
-                <h3 class="text-xl font-bold">Select Format</h3>
-                <p class="text-gray-400">Choose your preferred download format, including MP3 audio or MP4 video up to 1080p.</p>
+                <h3 class="text-xl font-bold" id="how-2-title">Select Format</h3>
+                <p class="text-gray-400" id="how-2-desc">Choose your preferred download format, including MP3 audio or
+                    MP4 video up to 1080p.</p>
             </div>
             <div class="space-y-4">
                 <div class="text-4xl font-black text-green-500/30">03</div>
-                <h3 class="text-xl font-bold">Start Download</h3>
-                <p class="text-gray-400">Hit the "Start Download" button and our multi-threaded engine handles the rest.</p>
+                <h3 class="text-xl font-bold" id="how-3-title">Start Download</h3>
+                <p class="text-gray-400" id="how-3-desc">Hit the "Start Download" button and our multi-threaded engine
+                    handles the rest.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Novice User Section -->
+    <section
+        class="container mx-auto px-6 py-24 border-t border-white/5 bg-gradient-to-b from-transparent to-blue-500/5">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">New to Downloader Pro? <br><span
+                    class="text-blue-500">Here's Why You'll Love It</span></h2>
+
+            <div class="space-y-8">
+                <div class="glass p-8 flex flex-col md:flex-row gap-6 items-center">
+                    <div class="text-5xl">📶</div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-2">Watch Anytime, Anywhere</h4>
+                        <p class="text-gray-400">Save videos once and watch them without internet. Perfect for long
+                            flights, road trips, or areas with poor connection.</p>
+                    </div>
+                </div>
+
+                <div class="glass p-8 flex flex-col md:flex-row gap-6 items-center">
+                    <div class="text-5xl">💾</div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-2">Your Data, Your Control</h4>
+                        <p class="text-gray-400">Streaming uses data every time you watch. Downloading once saves your
+                            mobile data and home bandwidth forever.</p>
+                    </div>
+                </div>
+
+                <div class="glass p-8 flex flex-col md:flex-row gap-6 items-center">
+                    <div class="text-5xl">🛡️</div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-2">Never Lose Your Favorites</h4>
+                        <p class="text-gray-400">Videos can be deleted or made private by creators. Pro Suite lets you
+                            keep a personal permanent copy of the content you value.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="pricing" class="container mx-auto px-6 py-24 border-t border-white/5">
         <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">Get Your Pro License</h2>
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight" id="pricing-title">Get Your Pro License
+            </h2>
         </div>
         <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <div class="glass p-10 flex flex-col">
-                <h3 class="text-2xl font-bold mb-2 text-blue-400">Personal License</h3>
-                <div class="text-5xl font-black mb-8">$24.99 <span class="text-sm text-gray-500 font-normal">/ Lifetime</span></div>
-                <a href="https://payhip.com/b/u0CnZ" class="block text-center bg-white/5 border border-white/10 py-4 rounded-xl font-bold hover:bg-white/10 transition">Buy Personal</a>
+                <h3 class="text-2xl font-bold mb-2 text-blue-400" id="p1-title">Personal License</h3>
+                <div class="text-5xl font-black mb-8">$24.99 <span class="text-sm text-gray-500 font-normal"
+                        id="p1-tag">/ Lifetime</span></div>
+                <a href="https://payhip.com/b/u0CnZ"
+                    class="block text-center bg-white/5 border border-white/10 py-4 rounded-xl font-bold hover:bg-white/10 transition"
+                    id="p1-btn">Buy Personal</a>
             </div>
             <div class="glass p-10 flex flex-col border-blue-500 relative scale-105 bg-blue-500/5 shadow-2xl">
-                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 text-[10px] font-black tracking-widest px-4 py-1 rounded-full uppercase">Most Popular</div>
-                <h3 class="text-2xl font-bold mb-2 text-purple-400">Pro Family Bundle</h3>
-                <div class="text-5xl font-black mb-8">$44.99 <span class="text-sm text-gray-400 font-normal">/ Lifetime</span></div>
-                <a href="https://payhip.com/b/FjZYf" class="glow-button block text-center bg-blue-600 py-4 rounded-xl font-bold hover:bg-blue-500 transition">Buy Pro Bundle</a>
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 text-[10px] font-black tracking-widest px-4 py-1 rounded-full uppercase"
+                    id="p2-promo">Most Popular</div>
+                <h3 class="text-2xl font-bold mb-2 text-purple-400" id="p2-title">Pro Family Bundle</h3>
+                <div class="text-5xl font-black mb-8">$44.99 <span class="text-sm text-gray-400 font-normal"
+                        id="p2-tag">/ Lifetime</span></div>
+                <a href="https://payhip.com/b/FjZYf"
+                    class="glow-button block text-center bg-blue-600 py-4 rounded-xl font-bold hover:bg-blue-500 transition"
+                    id="p2-btn">Buy Pro Bundle</a>
             </div>
         </div>
     </section>
 
     <footer class="container mx-auto px-6 py-12 border-t border-white/5 text-center">
         <div class="flex flex-col md:flex-row justify-between items-center gap-8 text-gray-500 text-sm">
-            <p>&copy; 2025 Endure PC. All Rights Reserved.</p>
+            <p id="footer-copy">&copy; 2025 Endure PC. All Rights Reserved.</p>
             <div class="flex space-x-6">
-                <a href="Terms of Service.html" class="hover:text-white transition">Terms</a>
-                <a href="Privacy Policy.html" class="hover:text-white transition">Privacy</a>
-                <a href="Support.html" class="hover:text-white transition">Support</a>
+                <a href="Terms of Service.html" class="hover:text-white transition" id="f-terms">Terms</a>
+                <a href="Privacy Policy.html" class="hover:text-white transition" id="f-privacy">Privacy</a>
+                <a href="Support.html" class="hover:text-white transition" id="f-support">Support</a>
             </div>
         </div>
     </footer>
-</body>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,bn,hi,ar,fr,es',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <style>
+        /* Modernize Google Translate Widget */
+        #google_translate_element {
+            min-height: 20px;
+        }
+
+        .goog-te-gadget-simple {
+            background-color: #ffffff !important;
+            border: 1px solid #ffffff !important;
+            padding: 4px 12px !important;
+            border-radius: 8px !important;
+            display: flex !important;
+            align-items: center !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .goog-te-gadget-simple:hover {
+            background-color: #f8fafc !important;
+            transform: translateY(-1px) !important;
+        }
+
+        .goog-te-gadget-simple .goog-te-menu-value {
+            color: #0f172a !important;
+            font-size: 12px !important;
+            font-weight: 600 !important;
+        }
+
+        .goog-te-gadget-simple .goog-te-menu-value span {
+            color: #0f172a !important;
+        }
+
+        /* Force Select Language text to dark when background is white */
+        .goog-te-gadget {
+            color: #0f172a !important;
+        }
+
+        .goog-te-gadget-simple {
+            color: #ffffff !important;
+        }
+
+        .goog-te-gadget-icon {
+            display: none !important;
+        }
+
+        .goog-te-banner-frame.skiptranslate {
+            display: none !important;
+        }
+
+        body {
+            top: 0px !important;
+        }
+    </style>
+
 </html>

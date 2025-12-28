@@ -1,18 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8"><title>Message Sent | YT Downloader Pro</title>
+    <meta charset="UTF-8">
+    <title>Message Sent | YT Downloader Pro</title>
+    <link rel="icon" href="endureicon.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <meta http-equiv="refresh" content="5;url=index.html">
-    <style>body { background: #020617; color: white; font-family: 'Inter', sans-serif; }</style>
+    <style>
+        body {
+            background: #020617;
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
 </head>
+
 <body class="flex flex-col min-h-screen items-center justify-center">
     <div class="text-center p-12 bg-white/5 rounded-3xl border border-white/10 backdrop-blur-xl">
         <i class="fas fa-check-circle text-6xl text-green-500 mb-6"></i>
-        <h1 class="text-3xl font-bold mb-4">Message Sent!</h1>
-        <p class="text-gray-400 mb-8">Redirecting back to home in 5 seconds...</p>
-        <a href="index.html" class="bg-blue-600 px-8 py-3 rounded-xl font-bold hover:bg-blue-500 transition">Go Home Now</a>
+        <h1 class="text-3xl font-bold mb-4" id="title">Message Sent!</h1>
+        <p class="text-gray-400 mb-8" id="desc">Redirecting back to home in 5 seconds...</p>
+        <a href="index.html" class="bg-blue-600 px-8 py-3 rounded-xl font-bold hover:bg-blue-500 transition" id="btn">Go
+            Home Now</a>
     </div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,bn,hi,ar,fr,es',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <div id="google_translate_element" style="display:none"></div>
+    <style>
+        .goog-te-banner-frame.skiptranslate {
+            display: none !important;
+        }
+
+        body {
+            top: 0px !important;
+        }
+    </style>
 </body>
+
 </html>
